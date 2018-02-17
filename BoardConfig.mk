@@ -16,7 +16,7 @@
 
 BOARD_VENDOR := cmdc
 
-LOCAL_PATH := device/cmdc/wt89536
+DEVICE_PATH := device/cmdc/wt89536
 
 TARGET_SPECIFIC_HEADER_PATH := device/cmdc/wt89536/include
 
@@ -51,7 +51,7 @@ BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CONFIG := lineageos_wt89536_defconfig
-TARGET_KERNEL_SOURCE := kernel/cmdc/m836
+TARGET_KERNEL_SOURCE := kernel/cmdc/msm8953
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
 # Platform
