@@ -18,19 +18,23 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from markw device
-$(call inherit-product, device/xiaomi/markw/device.mk)
+# Inherit from wt89536 device
+$(call inherit-product, device/cmdc/wt89536/device.mk)
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/mk/config/common_full_phone.mk)
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := mk_markw
-PRODUCT_DEVICE := markw
-PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Redmi 4
-PRODUCT_MANUFACTURER := Xiaomi
+PRODUCT_NAME := lineage_wt89536
+PRODUCT_DEVICE := wt89536
+PRODUCT_BRAND := CMCC
+PRODUCT_MODEL := M836
+PRODUCT_MANUFACTURER := CMDC
 
-PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+PRODUCT_GMS_CLIENTID_BASE := android-cmcc
 
-TARGET_VENDOR := Xiaomi
+TARGET_VENDOR := CMCC
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BUILD_FINGERPRINT="cmcc/wt89536/wt89536:7.1.2/NJH47F/20180208:user/release-keys" \
+    PRIVATE_BUILD_DESC="wt89536-user 7.1.2 NJH47F 20180208 release-keys"

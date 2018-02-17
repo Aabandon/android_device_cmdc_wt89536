@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017 The MoKee Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,6 +16,15 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),wt89536)
-include $(call all-subdir-makefiles,$(LOCAL_PATH))
-endif
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := soter
+LOCAL_MODULE_TAGS := optional
+
+LOCAL_SRC_FILES := \
+    $(call all-java-files-under, java) \
+    ../../../../frameworks/base/keystore/java/android/security/keystore/KeyProperties.java
+
+LOCAL_JAVA_LIBRARIES := bouncycastle okhttp
+
+include $(BUILD_JAVA_LIBRARY)

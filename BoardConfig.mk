@@ -14,11 +14,11 @@
 # limitations under the License.
 #
 
-BOARD_VENDOR := xiaomi
+BOARD_VENDOR := cmdc
 
-DEVICE_PATH := device/xiaomi/markw
+LOCAL_PATH := device/cmdc/wt89536
 
-TARGET_SPECIFIC_HEADER_PATH := device/xiaomi/markw/include
+TARGET_SPECIFIC_HEADER_PATH := device/cmdc/wt89536/include
 
 # Architecture
 TARGET_ARCH := arm64
@@ -50,8 +50,8 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CONFIG := markw_defconfig
-TARGET_KERNEL_SOURCE := kernel/xiaomi/markw
+TARGET_KERNEL_CONFIG := lineageos_wt89536_defconfig
+TARGET_KERNEL_SOURCE := kernel/cmdc/m836
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
 # Platform
@@ -130,7 +130,7 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # CM Hardware
 BOARD_HARDWARE_CLASS += \
-    hardware/mokee/mkhw \
+    hardware/cyanogen/cmhw \
     $(DEVICE_PATH)/mkhw
 TARGET_TAP_TO_WAKE_NODE := "/proc/gesture/onoff"
 
@@ -174,8 +174,8 @@ TARGET_PROVIDES_LIBLIGHT := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_CACHEIMAGE_PARTITION_SIZE := 402653184
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 58846064640
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2684354560
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 26838801408
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 
 # Power
@@ -207,8 +207,8 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 USE_SENSOR_MULTI_HAL := true
 
 # Vendor init
-TARGET_INIT_VENDOR_LIB := libinit_markw
-TARGET_RECOVERY_DEVICE_MODULES := libinit_markw
+TARGET_INIT_VENDOR_LIB := libinit_wt89536
+TARGET_RECOVERY_DEVICE_MODULES := libinit_wt89536
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
@@ -224,4 +224,4 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
--include vendor/xiaomi/markw/BoardConfigVendor.mk
+-include vendor/cmdc/wt89536/BoardConfigVendor.mk

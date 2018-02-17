@@ -245,9 +245,9 @@ persist.sys.mcd_config_file=/system/etc/mcd_default.conf
 ro.carrier=unknown
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.frp.pst=/dev/block/bootdevice/by-name/config
-ro.product.manufacturer=Xiaomi
+ro.product.manufacturer=CMDC
 keyguard.no_require_sim=true
-ro.product.cuptsm=XIAOMI|ESE|02|01
+ro.product.cuptsm=CMDC|ESE|02|01
 persist.power.useautobrightadj=true
 ro.sf.lcd_density=480
 persist.dbg.volte_avail_ovr=1
@@ -266,4 +266,4 @@ sys.haptic.tap.normal=0,24,32,48
 sys.haptic.tap.strong=0,33,34,56
 
 # Maintainer
-ro.mk.maintainer=wood
+ro.rr.maintainer=shiguang

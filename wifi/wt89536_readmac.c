@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "xiaomi_readmac"
+#define LOG_TAG "wt89536_readmac"
 #define LOG_NDEBUG 0
 
 #include <cutils/log.h>
