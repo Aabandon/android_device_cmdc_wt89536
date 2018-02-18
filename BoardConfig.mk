@@ -62,7 +62,7 @@ TARGET_BOARD_SUFFIX := _64
 USE_CLANG_PLATFORM_BUILD := true
 
 # Releasetools
-#TARGET_RELEASETOOLS_EXTENSIONS := device/qcom/common
+TARGET_RELEASETOOLS_EXTENSIONS := device/qcom/common
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
