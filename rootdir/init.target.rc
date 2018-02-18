@@ -53,6 +53,32 @@ on post-fs-data
     mkdir /data/misc/dts 0770 media audio
     mkdir /data/misc/hbtp 0750 system system
 
+# Vibrator
+    chown system system /sys/class/timed_output/vibrator/vtg_level
+    chown system system /sys/class/timed_output/vibrator/vtg_max
+    chown system system /sys/class/timed_output/vibrator/vtg_min
+    chmod 0644 /sys/class/timed_output/vibrator/vtg_level
+    chmod 0644 /sys/class/timed_output/vibrator/vtg_max
+    chmod 0644 /sys/class/timed_output/vibrator/vtg_min
+
+# Advanced color control for Qualcomm
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcalkcalkcal
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcalkcalkcal_min
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcalkcalkcal_enable
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcalkcalkcal_invert
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcalkcalkcal_sat
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcalkcalkcal_hue
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcalkcalkcal_val
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcalkcalkcal_cont
+    chmod 0644 /sys/devices/platform/kcal_ctrl.0/kcalkcal
+    chmod 0644 /sys/devices/platform/kcal_ctrl.0/kcalkcal_min
+    chmod 0644 /sys/devices/platform/kcal_ctrl.0/kcalkcal_enable
+    chmod 0644 /sys/devices/platform/kcal_ctrl.0/kcalkcal_invert
+    chmod 0644 /sys/devices/platform/kcal_ctrl.0/kcalkcal_sat
+    chmod 0644 /sys/devices/platform/kcal_ctrl.0/kcalkcal_hue
+    chmod 0644 /sys/devices/platform/kcal_ctrl.0/kcalkcal_val
+    chmod 0644 /sys/devices/platform/kcal_ctrl.0/kcalkcal_cont
+
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
@@ -113,11 +139,13 @@ service thermal-engine /system/vendor/bin/thermal-engine
    socket thermal-recv-client stream 0660 system system
    socket thermal-recv-passive-client stream 0666 system system
    group root
+   writepid /dev/cpuset/system-background/tasks
 
 service time_daemon /system/bin/time_daemon
    class main
    user root
    group root
+   writepid /dev/cpuset/system-background/tasks
 
 service audiod /system/bin/audiod
    class late_start
@@ -147,13 +175,15 @@ service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
-    group radio net_raw log diag
+    group radio log diag
+    writepid /dev/cpuset/system-background/tasks
 
 service imsdatadaemon /system/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
-    group system wifi radio inet net_raw log diag net_admin
+    group system wifi radio inet log diag
+    writepid /dev/cpuset/system-background/tasks
     disabled
 
 on property:sys.ims.QMI_DAEMON_STATUS=1
@@ -163,13 +193,15 @@ service ims_rtp_daemon /system/bin/ims_rtp_daemon
    class main
    user system
    socket ims_rtpd stream 0660 system radio
-   group radio net_raw diag diag inet log
+   group radio diag diag inet log
+   writepid /dev/cpuset/system-background/tasks
    disabled
 
 service imscmservice /system/bin/imscmservice
    class main
    user system
    group radio diag inet log
+   writepid /dev/cpuset/system-background/tasks
    disabled
 
 on property:sys.ims.DATA_DAEMON_STATUS=1
@@ -245,12 +277,14 @@ on property:init.svc.dts_configurator=stopped
 service per_mgr /system/bin/pm-service
     class core
     user system
-    group system net_raw
+    group system
+    writepid /dev/cpuset/system-background/tasks
 
 service per_proxy /system/bin/pm-proxy
     class core
     user system
     group system
+    writepid /dev/cpuset/system-background/tasks
     disabled
 
 on property:init.svc.per_mgr=running
