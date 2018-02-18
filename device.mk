@@ -302,6 +302,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
 
+# SOTER (Fingerprint support for WeChat Payment)
+PRODUCT_PACKAGES += \
+    soter
+
+PRODUCT_BOOT_JARS += \
+    soter
 # Wifi
 PRODUCT_PACKAGES += \
     libqsap_sdk \
